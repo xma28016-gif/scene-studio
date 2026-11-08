@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#467caa"><meta name="description" content="上传一张商品图，生成不同场景里的商品摄影图。">
+<title>Scene Studio · 好物，自有风景</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/studio.css"><link rel="stylesheet" href="/studio-live.css">
+<script src="/vendor/supabase.js"></script><script src="/studio.js" type="module"></script>
+</head><body>
+
+<svg class="sprite" aria-hidden="true"><defs><symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol><symbol id="send" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol><symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol><symbol id="save" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 17v3h14v-3"/></symbol><symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="left" viewBox="0 0 24 24"><path d="m14 5-7 7 7 7"/></symbol><symbol id="right" viewBox="0 0 24 24"><path d="m10 5 7 7-7 7"/></symbol><symbol id="retry" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></symbol><symbol id="desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol><symbol id="phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol><symbol id="image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol><symbol id="mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 10v2a6.5 6.5 0 0 0 13 0v-2M12 18.5V22m-3 0h6"/></symbol><symbol id="stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" stroke="none"/></symbol></defs></svg>
+
+<main id="preview"><canvas id="ocean-canvas" aria-hidden="true"></canvas><section class="product" id="studio-product">
+<header class="p-header"><span class="wordmark">Scene Studio</span><div class="header-actions"><button class="account-button works-entry" id="my-works">我的作品</button><button class="new-task" id="new-task" hidden aria-label="新建创作"><svg aria-hidden="true"><use href="#plus"></use></svg><span>新建</span></button><div class="account-area" aria-label="账号"><span id="account-email" class="account-email" hidden></span><button id="open-auth" class="account-button" disabled>登录 / 注册</button><button id="sign-out" class="account-button" hidden>退出</button></div></div></header>
+<div id="stage" class="stage-host"><div class="boot-loading" role="status"><span class="spinner" aria-hidden="true"></span>加载中…</div></div><section id="works-panel" class="works-panel" hidden aria-label="我的作品"></section><dialog id="image-overlay" class="image-dialog" aria-label="图片查看"></dialog><dialog id="work-viewer" class="image-dialog" aria-label="作品大图"></dialog>
+</section></main>
+<input id="upload" type="file" accept="image/*,.heic,.heif" hidden>
+<dialog id="settings-dialog" class="popover settings-dialog" aria-labelledby="settings-title"></dialog>
+<div id="studio-notice" class="studio-notice" role="status" hidden></div>
+    <dialog id="auth-dialog" class="auth-dialog" aria-labelledby="auth-title">
+      <div class="auth-dialog-heading"><h2 id="auth-title">登录 Scene Studio</h2><button type="button" id="close-auth" class="auth-close" aria-label="关闭登录窗口">×</button></div>
+      <div class="auth-tabs" aria-label="切换登录或注册"><button type="button" id="auth-login-tab" aria-pressed="true">登录</button><button type="button" id="auth-signup-tab" aria-pressed="false">注册</button></div>
+      <form id="auth-form">
+        <fieldset id="auth-fields">
+          <label for="auth-email">邮箱</label><input id="auth-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required />
+          <label for="auth-password">密码</label><input id="auth-password" name="password" type="password" autocomplete="current-password" required />
+          <p id="password-hint" class="auth-description" hidden>密码至少 8 位。</p>
+          <button id="auth-submit" class="auth-submit" type="submit">登录</button>
+        </fieldset>
+      </form>
+      <p id="auth-message" class="auth-message" role="status" aria-live="polite" hidden></p>
+    </dialog>
+</body></html>

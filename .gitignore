@@ -1,0 +1,9 @@
+.env*
+!.env.example
+.vercel/
+node_modules/
+.DS_Store
+artifacts/
+dist/vendor/
+dist/auth-config.js
+dist/prototype.html

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/generate.js": { "maxDuration": 300, "supportsCancellation": true },
+    "api/upload.js": { "maxDuration": 60 },
+    "api/download.js": { "maxDuration": 60 },
+    "api/works.js": { "maxDuration": 60 }
+  }
+}
